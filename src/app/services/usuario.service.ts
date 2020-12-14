@@ -28,6 +28,8 @@ export class UsuarioService {
     }
    
     loginGoogle(token) {
+      console.log(token);
+      
       return this.http.post(`${base_url}/login/google`, { token })
       .pipe(
         tap((resp: any) =>{

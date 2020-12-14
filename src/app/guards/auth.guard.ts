@@ -14,11 +14,8 @@ export class AuthGuard implements CanActivate {
    return this.usuarioService.validarToken().pipe(
      tap((isAuth) =>{
        if(!isAuth) {
-         console.log("hola");
-         
          this.router.navigateByUrl('/login');
        }else{
-         console.log("si entro");
          
        }
      })

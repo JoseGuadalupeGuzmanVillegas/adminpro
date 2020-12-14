@@ -87,7 +87,6 @@ export class LoginComponent implements OnInit {
     this.auth2.attachClickHandler(element, {},
         (googleUser) => {
           const id_token = googleUser.getAuthResponse().id_token;
-          console.log(googleUser.getBasicProfile());
           const cu = googleUser.getBasicProfile().cu; 
           this.usuarioService.loginGoogle(id_token).subscribe((usutoken: any)=>{
             if (usutoken.status) {
@@ -110,7 +109,7 @@ export class LoginComponent implements OnInit {
                 confirmButtonText: 'Ok',
               });
             }
-          } )
+          } );
           
 
         }, (error) =>{
