@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
+    this.formSubmitted = true;
     this.usuarioService.login(this.loginForm.value).subscribe((resp: any) => {
       if (resp.status) {
         if (this.loginForm.get('remember').value) {
@@ -45,16 +46,11 @@ export class LoginComponent implements OnInit {
           confirmButtonText: 'Ok',
         }).then((result) => {
           if (result.isConfirmed) {
+            console.log(result);
             this.router.navigateByUrl('/');
           }
         });
       } else {
-        Swal.fire({
-          title: 'Error!',
-          text: resp.message,
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
       }
     });
   }
@@ -133,4 +129,12 @@ export class LoginComponent implements OnInit {
       }
     });// fin swal.fire
   }
+
+  campoNoValido(campo: string): boolean {
+    if (this.loginForm.get(campo).invalid && this.formSubmitted) {
+        return true;
+      } else{
+        return false;
+      }
+     }
 }

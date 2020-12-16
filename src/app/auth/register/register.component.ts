@@ -14,10 +14,10 @@ export class RegisterComponent  {
 
   public registerForm = this.formBuilder.group(
     {
-      nombre: ['Fran', Validators.required],
-      email: ['fran@fma.com', [Validators.required, Validators.email]],
-      password: ['123', Validators.required],
-      password2: ['123', Validators.required],
+      nombre: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      password2: ['', Validators.required],
       terminos: [false, Validators.requiredTrue],
     },
     {
@@ -60,12 +60,12 @@ export class RegisterComponent  {
   }
 
   campoNoValido(campo: string): boolean {
-    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+  if (this.registerForm.get(campo).invalid && this.formSubmitted) {
       return true;
-    } else {
+    } else{
       return false;
     }
-  }
+   }
 
   contrasenasNoValidas() {
     const pass1 = this.registerForm.get('password').value;
